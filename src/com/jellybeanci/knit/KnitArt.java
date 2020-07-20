@@ -45,8 +45,8 @@ public class KnitArt
     {
         for (Point2D point : pinList)
         {
-            graphicsContext.setStroke(Color.RED);
-            graphicsContext.strokeOval(point.getX() - 0.5, point.getY() - 0.5, 1, 1);
+            graphicsContext.setStroke(Color.BLACK);
+            graphicsContext.strokeOval(point.getX() - 0.5, point.getY() - 0.5, 2, 2);
         }
     }
 
