@@ -1,15 +1,15 @@
 ## Still Under Development
 
 ### TODO List
-- [] User Friendly UI
+- [ ] User Friendly UI
 - [x] Save As File (21/07/2020)
-- [] High Resolotion Save
-- [] Re-watchable TimeLapse
-- [] Dialable parameters
-  - [] Line-Width
-  - [] Color
-  - [] Opacity
-  - [] TimeLapse Play Rate
+- [ ] High Resolotion Save
+- [ ] Re-watchable TimeLapse
+- [ ] Dialable parameters
+  - [ ] Line-Width
+  - [ ] Color
+  - [ ] Opacity
+  - [ ] TimeLapse Play Rate
 
 # Knit-String-Art
 Knit String Art With JavaFx
