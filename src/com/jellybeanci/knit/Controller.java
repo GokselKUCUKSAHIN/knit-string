@@ -53,7 +53,7 @@ public class Controller
             frame();
         }));
         update.setCycleCount(Timeline.INDEFINITE);
-        update.setRate(2);
+        update.setRate(1.5);
         update.setAutoReverse(false);
         //
         now();
@@ -69,7 +69,7 @@ public class Controller
         //drawLine(new Point2D(0,0),new Point2D(600,600), Color.RED);
         try
         {
-            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("me_close.png"));
+            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("ibo.png"));
         }
         catch (IOException e)
         {
@@ -108,6 +108,10 @@ public class Controller
         if (count < KnitArt.deathStrand.size())
         {
             KnitArt.drawLine(gc, KnitArt.deathStrand.get(count++), KnitArt.forecolor);
+        }
+        else if (count >= KnitArt.LINE_LIMIT)
+        {
+            update.pause();
         }
     }
 
