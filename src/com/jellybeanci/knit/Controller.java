@@ -2,16 +2,20 @@ package com.jellybeanci.knit;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.util.Duration;
 
+import javax.imageio.ImageIO;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -107,12 +111,30 @@ public class Controller
 
     private static int count = 0;
 
-    private static void frame()
+    private void frame()
     {
         if (count < KnitArt.deathStrand.size())
         {
             KnitArt.drawLine(gc, KnitArt.deathStrand.get(count++), KnitArt.forecolor);
+        } else if (count >= KnitArt.LINE_LIMIT)
+        {
+            update.pause();
+            System.out.println("SAVE");
+            saveFile(this.canvas);
         }
+    }
+
+    static WritableImage wim = new WritableImage(600, 600);
+
+    public static void saveFile(Canvas canvas)
+    {
+        File file = new File("CanvasImage.png");
+        canvas.snapshot(null, wim);
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(wim, null), "png", file);
+        } catch (Exception s) {
+        }
+
     }
 
     private static void timeStamp()
