@@ -7,8 +7,9 @@
 - [ ] Re-watchable TimeLapse
 - [ ] Dialable parameters
   - [ ] Line-Width
-  - [ ] Color
-  - [ ] Opacity
+  - [ ] Line-Color
+  - [ ] Line-Opacity
+  - [ ] Line-Count
   - [ ] TimeLapse Play Rate
 
 # Knit-String-Art
