@@ -14,7 +14,9 @@ import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Controller
 {
@@ -46,6 +48,7 @@ public class Controller
     @FXML
     private void initialize()
     {
+        timeStamp();
         center = new Point2D(WIDTH / 2, HEIGHT / 2);
         gc = canvas.getGraphicsContext2D();
         //
@@ -53,12 +56,13 @@ public class Controller
             frame();
         }));
         update.setCycleCount(Timeline.INDEFINITE);
-        update.setRate(1.5);
+        update.setRate(2);
         update.setAutoReverse(false);
         //
         now();
         KnitArt.isRealyDone.addListener((observable, oldValue, newValue) -> {
             System.out.println("READY!!!");
+            timeStamp();
         });
     }
 
@@ -69,7 +73,7 @@ public class Controller
         //drawLine(new Point2D(0,0),new Point2D(600,600), Color.RED);
         try
         {
-            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("ibo.png"));
+            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("me_close.png"));
         }
         catch (IOException e)
         {
@@ -109,10 +113,12 @@ public class Controller
         {
             KnitArt.drawLine(gc, KnitArt.deathStrand.get(count++), KnitArt.forecolor);
         }
-        else if (count >= KnitArt.LINE_LIMIT)
-        {
-            update.pause();
-        }
     }
 
+    private static void timeStamp()
+    {
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        Date date = ts;
+        System.out.println(date);
+    }
 }

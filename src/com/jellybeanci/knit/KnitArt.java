@@ -19,7 +19,7 @@ public class KnitArt
     private static GraphicsContext graphicsContext;
 
     private static Image image;
-    private static short[] imageData;
+    private static double[] imageData;
     private static Point2D[] pinList;
     public static ArrayList<Strand> lineList = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class KnitArt
         }
     }
 
-    public static void draw(GraphicsContext gc, short[] imageData, Point2D[] pinList, int startPinIndex)
+    public static void draw(GraphicsContext gc, double[] imageData, Point2D[] pinList, int startPinIndex)
     {
         int endPinIndex = 0;
         double highestScore = 0;
@@ -172,7 +172,7 @@ public class KnitArt
         return pointList;
     }
 
-    public static void reduceImageData(short[] img, Point2D start, Point2D end)
+    public static void reduceImageData(double[] img, Point2D start, Point2D end)
     {
         ArrayList<Point2D> dotList = getPointListOnLine(start, end);
         for (Point2D dot : dotList)
@@ -180,10 +180,10 @@ public class KnitArt
             try
             {
                 int startIndex = (int) (dot.getY() * image.getWidth() + dot.getX());
-                img[startIndex] += 50;
-                if (img[startIndex] > 255)
+                img[startIndex] += 0.196; // 50 / 255
+                if (img[startIndex] > 1) // 255
                 {
-                    img[startIndex] = 255;
+                    img[startIndex] = 1; // 255
                 }
             }
             catch (Exception ex)
@@ -193,7 +193,7 @@ public class KnitArt
         }
     }
 
-    public static double getLineScore(short[] img, Point2D start, Point2D end)
+    public static double getLineScore(double[] img, Point2D start, Point2D end)
     {
         ArrayList<Point2D> dotList = getPointListOnLine(start, end);
         //
@@ -202,8 +202,8 @@ public class KnitArt
         {
             try
             {
-                short colorR = img[(int) image.getWidth() * (int) dot.getY() + (int) dot.getX()];
-                dotScoreList.add(1 - (colorR / (double) 255));
+                double colorR = img[(int) image.getWidth() * (int) dot.getY() + (int) dot.getX()];
+                dotScoreList.add(1 - colorR);
             }
             catch (Exception ex)
             {
@@ -258,19 +258,19 @@ public class KnitArt
         return str;
     }
 
-    public static short[] getImageArray(Image img)
+    public static double[] getImageArray(Image img)
     {
         // row, colum
         // y  , x
         // img[y,x]
         PixelReader pixelReader = img.getPixelReader();
-        short[] imgArr = new short[(int) img.getHeight() * (int) img.getWidth()];
+        double[] imgArr = new double[(int) img.getHeight() * (int) img.getWidth()];
         int index = 0;
         for (int y = 0; y < img.getHeight(); y++)
         {
             for (int x = 0; x < img.getWidth(); x++)
             {
-                imgArr[index++] = (short) (pixelReader.getColor(x, y).getRed() * 255); //0-1 to 0-255
+                imgArr[index++] = pixelReader.getColor(x, y).getRed();
             }
         }
         return imgArr;
