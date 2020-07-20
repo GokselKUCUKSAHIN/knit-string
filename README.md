@@ -1,3 +1,16 @@
+## Still Under Development
+
+### TODO List
+- [] User Friendly UI
+- [x] Save As File (21/07/2020)
+- [] High Resolotion Save
+- [] Re-watchable TimeLapse
+- [] Dialable parameters
+  - [] Line-Width
+  - [] Color
+  - [] Opacity
+  - [] TimeLapse Play Rate
+
 # Knit-String-Art
 Knit String Art With JavaFx
 
@@ -11,3 +24,4 @@ Knit Algorithm from: <https://github.com/midare/string-knitting/>
 ![image](https://user-images.githubusercontent.com/33639948/87911808-e24dfb80-ca74-11ea-8a3c-2ebad86b5eee.png)
 
 ![image](https://user-images.githubusercontent.com/33639948/87911848-f42f9e80-ca74-11ea-830e-5e9698c5fcfd.png)
+
