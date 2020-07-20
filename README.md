@@ -2,8 +2,8 @@
 
 ### TODO List📝
 - [ ] User Friendly UI
-- [x] Save As File (21/07/2020)
-- [ ] High Resolotion Save
+- [x] Save As File (✅ 21/07/2020)
+- [x] High Resolotion Save (✅ 21/07/2020)
 - [ ] Re-watchable TimeLapse
 - [ ] Dialable parameters
   - [ ] Line-Width
