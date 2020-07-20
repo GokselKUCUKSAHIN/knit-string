@@ -77,7 +77,7 @@ public class Controller
         //drawLine(new Point2D(0,0),new Point2D(600,600), Color.RED);
         try
         {
-            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("me_close.png"));
+            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("part.png"));
         }
         catch (IOException e)
         {
@@ -120,22 +120,56 @@ public class Controller
         {
             update.pause();
             System.out.println("SAVE");
-            saveFile(this.canvas);
+            //saveFile(this.canvas);
+            saveAsBigPicture();
         }
     }
 
     static WritableImage wim = new WritableImage(600, 600);
+    static WritableImage highRes = new WritableImage(6000, 6000);
 
     public static void saveFile(Canvas canvas)
     {
         File file = new File("CanvasImage.png");
         canvas.snapshot(null, wim);
-        try {
+        try
+        {
             ImageIO.write(SwingFXUtils.fromFXImage(wim, null), "png", file);
-        } catch (Exception s) {
+        }
+        catch (Exception s)
+        {
         }
 
     }
+
+    public static void saveAsBigPicture()
+    {
+        Canvas nCanvas = new Canvas(6000, 6000);
+        GraphicsContext highResGC = nCanvas.getGraphicsContext2D();
+        highResGC.setFill(Color.WHITE);
+        highResGC.fillRect(0, 0, 6000, 6000); // background!
+        highResGC.setLineWidth(2);
+        highResGC.setStroke(Color.color(0, 0, 0, 0.6));
+        Point2D[] highPinList = KnitArt.generatePinList(400, 6000, 6000);
+        for (int i = 0; i < KnitArt.lineList.size(); i++)
+        {
+            Strand _strand = KnitArt.lineList.get(i);
+            Point2D start = highPinList[_strand.startPinIndex];
+            Point2D end = highPinList[_strand.endPinIndex];
+            highResGC.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
+        }
+        System.out.println("SAVING...");
+        File file = new File("HIGH_RES.png");
+        nCanvas.snapshot(null, highRes);
+        try
+        {
+            ImageIO.write(SwingFXUtils.fromFXImage(highRes, null), "png", file);
+        }
+        catch (Exception s)
+        {
+        }
+    }
+
 
     private static void timeStamp()
     {
