@@ -1,4 +1,4 @@
-package com.jellybeanci.numberPi;
+package com.jellybeanci.knit;
 
 import java.util.Random;
 

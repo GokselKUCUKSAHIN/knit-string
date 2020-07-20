@@ -8,7 +8,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="350.0" minWidth="350.0" prefHeight="610.0"
             prefWidth="610.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.jellybeanci.numberPi.Controller" fx:id="rootPane">
+            fx:controller="com.jellybeanci.knit.Controller" fx:id="rootPane">
     <center>
         <Canvas fx:id="canvas" height="610.0" width="610.0" layoutX="0" layoutY="0" BorderPane.alignment="CENTER"/>
     </center>

@@ -1,4 +1,4 @@
-package com.jellybeanci.numberPi;
+package com.jellybeanci.knit;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -6,15 +6,10 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.ColorInputBuilder;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
-import javafx.scene.shape.StrokeType;
 import javafx.util.Duration;
 
 import java.io.FileInputStream;
@@ -42,16 +37,6 @@ public class Controller
 
     @FXML
     BorderPane rootPane;
-
-
-    protected static ArrayList<Arc> arcs = new ArrayList<>();
-    protected static final int[] angleArray = new int[]{90, 54, 18, 342, 306, 270, 234, 198, 162, 126};
-    protected static double x;
-    protected static double y;
-    protected static double arcR = 250;
-    protected double r = 0.95;
-    protected static Number number;
-    private static int piCount = 0;
 
     private static Image loadImage(String name) throws IOException
     {

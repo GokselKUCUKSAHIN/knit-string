@@ -1,6 +1,5 @@
-package com.jellybeanci.numberPi;
+package com.jellybeanci.knit;
 
-import com.sun.istack.internal.Nullable;
 import javafx.geometry.Point2D;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.jellybeanci.numberPi;
+package com.jellybeanci.knit;
 
 /*
  Copyright (c) 2019 Goksel KUCUKSAHIN

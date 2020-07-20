@@ -1,12 +1,8 @@
-package com.jellybeanci.numberPi;
+package com.jellybeanci.knit;
 
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
@@ -19,8 +15,6 @@ public class KnitArt
 
     public static ArrayList<Strand> deathStrand = new ArrayList<>();
     public static BooleanProperty isRealyDone = new SimpleBooleanProperty(false);
-    //
-    private static Color backcolor = Color.rgb(51, 51, 51);
     public static Color forecolor = Color.color(0, 0, 0, 0.45);
     private static GraphicsContext graphicsContext;
 
@@ -30,7 +24,7 @@ public class KnitArt
     public static ArrayList<Strand> lineList = new ArrayList<>();
 
     //public static final int LINE_LIMIT = 1500;
-    public static final int LINE_LIMIT = 2200; //3000 is little too much
+    public static final int LINE_LIMIT = 2300; //3000 is little too much
     private static int lineCount = 0;
 
     public KnitArt(GraphicsContext gc, int width, int height, int pinCount, Image img)
@@ -124,13 +118,7 @@ public class KnitArt
     {
         if (end.getX() - start.getX() == 0)
         {
-            if (dot.getX() == end.getX())
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return (dot.getX() == end.getX());
         }
         //
         final double slope = (end.getY() - start.getY()) / (end.getX() - start.getX());
@@ -143,34 +131,17 @@ public class KnitArt
 
         if (Math.abs(slope) <= 1)
         {
-            if ((blockLeftY >= blockBottomY && blockLeftY <= blockTopY) ||
-                    (blockRightY >= blockBottomY && blockRightY <= blockTopY))
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return ((blockLeftY >= blockBottomY && blockLeftY <= blockTopY) ||
+                    (blockRightY >= blockBottomY && blockRightY <= blockTopY));
         } else
         {
             if (slope > 0)
             {
-                if (blockLeftY > blockTopY || blockRightY < blockBottomY)
-                {
-                    return false;
-                } else
-                {
-                    return true;
-                }
+                return !(blockLeftY > blockTopY || blockRightY < blockBottomY);
+
             } else
             {
-                if (blockRightY > blockBottomY || blockLeftY < blockBottomY)
-                {
-                    return false;
-                } else
-                {
-                    return true;
-                }
+                return !(blockRightY > blockBottomY || blockLeftY < blockBottomY);
             }
         }
     }
@@ -314,5 +285,4 @@ public class KnitArt
         }
         return array;
     }
-
 }
