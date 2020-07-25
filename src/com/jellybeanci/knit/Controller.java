@@ -60,7 +60,7 @@ public class Controller
             frame();
         }));
         update.setCycleCount(Timeline.INDEFINITE);
-        update.setRate(2);
+        update.setRate(1);
         update.setAutoReverse(false);
         //
         now();

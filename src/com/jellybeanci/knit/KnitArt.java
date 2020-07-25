@@ -178,26 +178,72 @@ public class KnitArt
     public static void reduceImageData(double[] img, Point2D start, Point2D end)
     {
         ArrayList<Point2D> dotList = getPointListOnLine(start, end);
+        int quadPoint = dotList.size() / 4;
+        Runnable r1 = () -> {
+            for (int i = 0; i < quadPoint; i++)
+            {
+                Point2D dot = dotList.get(i);
+                reducePoint(dot, img);
+            }
+        };
+        Runnable r2 = () -> {
+            for (int i = quadPoint; i < 2*quadPoint; i++)
+            {
+                Point2D dot = dotList.get(i);
+                reducePoint(dot, img);
+            }
+        };
+
+        Runnable r3 = () -> {
+            for (int i = 2*quadPoint; i < 3*quadPoint; i++)
+            {
+                Point2D dot = dotList.get(i);
+                reducePoint(dot, img);
+            }
+        };
+        Runnable r4 = () -> {
+            for (int i = 3*quadPoint; i < dotList.size(); i++)
+            {
+                Point2D dot = dotList.get(i);
+                reducePoint(dot, img);
+            }
+        };
+        Thread t1 = new Thread(r1);
+        Thread t2 = new Thread(r2);
+        Thread t3 = new Thread(r3);
+        Thread t4 = new Thread(r4);
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+
+        /*
         for (Point2D dot : dotList)
         {
-            try
+            reducePoint(dot, img);
+        }
+        */
+    }
+
+    public static void reducePoint(Point2D dot, double[] img)
+    {
+        try
+        {
+            int startIndex = (int) (dot.getY() * image.getWidth() + dot.getX());
+            if (startIndex < img.length)
             {
-                int startIndex = (int) (dot.getY() * image.getWidth() + dot.getX());
-                if(startIndex < img.length)
+                img[startIndex] += 0.196; // 50 / 255
+                if (img[startIndex] > 1) // 255
                 {
-                    img[startIndex] += 0.196; // 50 / 255
-                    if (img[startIndex] > 1) // 255
-                    {
-                        img[startIndex] = 1; // 255
-                    }
+                    img[startIndex] = 1; // 255
                 }
             }
-            catch (Exception ex)
-            {
-                errCountRecude++;
-                System.out.println((int) (dot.getY() * image.getWidth() + dot.getX()) + " ERR OUT");
-                //System.out.println(dot.getX() + "; " + dot.getY());
-            }
+        }
+        catch (Exception ex)
+        {
+            errCountRecude++;
+            System.out.println((int) (dot.getY() * image.getWidth() + dot.getX()) + " ERR OUT");
+            //System.out.println(dot.getX() + "; " + dot.getY());
         }
     }
 
@@ -211,7 +257,7 @@ public class KnitArt
             try
             {
                 int index = (int) image.getWidth() * (int) dot.getY() + (int) dot.getX();
-                if(index < img.length)
+                if (index < img.length)
                 {
                     double colorR = img[index];
                     dotScoreList.add(1 - colorR);
