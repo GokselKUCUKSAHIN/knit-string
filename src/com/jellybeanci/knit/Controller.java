@@ -60,12 +60,13 @@ public class Controller
             frame();
         }));
         update.setCycleCount(Timeline.INDEFINITE);
-        update.setRate(2);
+        update.setRate(100);
         update.setAutoReverse(false);
         //
         now();
         KnitArt.isRealyDone.addListener((observable, oldValue, newValue) -> {
             System.out.println("READY!!!");
+            System.out.println("RecudeImageDataErr: " + KnitArt.errCountRecude + "; GetLineScoreErr: " + KnitArt.errCountScore);
             timeStamp();
         });
     }
@@ -77,7 +78,7 @@ public class Controller
         //drawLine(new Point2D(0,0),new Point2D(600,600), Color.RED);
         try
         {
-            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("part.png"));
+            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("me_close.png"));
         }
         catch (IOException e)
         {
@@ -119,9 +120,9 @@ public class Controller
         } else if (count >= KnitArt.LINE_LIMIT)
         {
             update.pause();
-            System.out.println("SAVE");
+            //System.out.println("SAVE");
             //saveFile(this.canvas);
-            saveAsBigPicture();
+            //saveAsBigPicture();
         }
     }
 

@@ -23,6 +23,9 @@ public class KnitArt
     private static Point2D[] pinList;
     public static ArrayList<Strand> lineList = new ArrayList<>();
 
+    public static int errCountRecude = 0;
+    public static int errCountScore = 0;
+
     //public static final int LINE_LIMIT = 1500;
     public static final int LINE_LIMIT = 2300; //3000 is little too much
     private static int lineCount = 0;
@@ -46,7 +49,7 @@ public class KnitArt
         for (Point2D point : pinList)
         {
             graphicsContext.setStroke(Color.BLACK);
-            graphicsContext.strokeOval(point.getX() - 0.5, point.getY() - 0.5, 2, 2);
+            graphicsContext.strokeOval(point.getX() - 1, point.getY() - 1, 2, 2);
         }
     }
 
@@ -180,14 +183,19 @@ public class KnitArt
             try
             {
                 int startIndex = (int) (dot.getY() * image.getWidth() + dot.getX());
-                img[startIndex] += 0.196; // 50 / 255
-                if (img[startIndex] > 1) // 255
+                if(startIndex < img.length)
                 {
-                    img[startIndex] = 1; // 255
+                    img[startIndex] += 0.196; // 50 / 255
+                    if (img[startIndex] > 1) // 255
+                    {
+                        img[startIndex] = 1; // 255
+                    }
                 }
             }
             catch (Exception ex)
             {
+                errCountRecude++;
+                System.out.println((int) (dot.getY() * image.getWidth() + dot.getX()) + " ERR OUT");
                 //System.out.println(dot.getX() + "; " + dot.getY());
             }
         }
@@ -202,11 +210,19 @@ public class KnitArt
         {
             try
             {
-                double colorR = img[(int) image.getWidth() * (int) dot.getY() + (int) dot.getX()];
-                dotScoreList.add(1 - colorR);
+                int index = (int) image.getWidth() * (int) dot.getY() + (int) dot.getX();
+                if(index < img.length)
+                {
+                    double colorR = img[index];
+                    dotScoreList.add(1 - colorR);
+                }
+                //double colorR = img[(int) image.getWidth() * (int) dot.getY() + (int) dot.getX()];
+                //dotScoreList.add(1 - colorR);
             }
             catch (Exception ex)
             {
+                errCountScore++;
+                //System.out.println((int) image.getWidth() * (int) dot.getY() + (int) dot.getX() + "ERR OUT");
                 // literally nothing.
                 //System.out.println("img width: " + image.getWidth() + ": " + dot.getX() + "; " + dot.getY());
             }
