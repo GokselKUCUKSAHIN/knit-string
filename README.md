@@ -5,6 +5,7 @@
 - [x] Save As File (✅ 21/07/2020)
 - [x] High Resolotion Save (✅ 21/07/2020)
 - [ ] Re-watchable TimeLapse
+- [ ] MultiThreading and Parallel processing
 - [ ] Dialable parameters
   - [ ] Line-Width
   - [ ] Line-Color
