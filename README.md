@@ -6,6 +6,9 @@
 - [x] High Resolotion Save (✅ 21/07/2020)
 - [ ] Re-watchable TimeLapse
 - [ ] MultiThreading and Parallel processing
+  - [x] Concurrent saving (✅ 04/08/2020)
+  - [x] Parallel Knit Point calculations (✅ 30/07/2020)
+  - [ ] Parallel Line Score calculations 
 - [ ] Dialable parameters
   - [ ] Line-Width
   - [ ] Line-Color
