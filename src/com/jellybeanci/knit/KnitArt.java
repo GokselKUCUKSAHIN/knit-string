@@ -27,7 +27,7 @@ public class KnitArt
     public static int errCountScore = 0;
 
     //public static final int LINE_LIMIT = 1500;
-    public static final int LINE_LIMIT = 2300; //3000 is little too much
+    public static final int LINE_LIMIT = 2400; //3000 is little too much
     private static int lineCount = 0;
 
     public KnitArt(GraphicsContext gc, int width, int height, int pinCount, Image img)

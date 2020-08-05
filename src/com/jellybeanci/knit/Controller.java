@@ -2,6 +2,7 @@ package com.jellybeanci.knit;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
@@ -60,7 +61,7 @@ public class Controller
             frame();
         }));
         update.setCycleCount(Timeline.INDEFINITE);
-        update.setRate(1);
+        update.setRate(2.5);
         update.setAutoReverse(false);
         //
         now();
@@ -122,7 +123,10 @@ public class Controller
             update.pause();
             //System.out.println("SAVE");
             //saveFile(this.canvas);
-            //saveAsBigPicture();
+            Platform.runLater(() -> {
+                // Update UI here.
+                saveAsBigPicture();
+            });
         }
     }
 
@@ -159,16 +163,23 @@ public class Controller
             Point2D end = highPinList[_strand.endPinIndex];
             highResGC.strokeLine(start.getX(), start.getY(), end.getX(), end.getY());
         }
-        System.out.println("SAVING...");
+        System.out.println("SAVING... Please Wait");
         File file = new File("HIGH_RES.png");
         nCanvas.snapshot(null, highRes);
-        try
-        {
-            ImageIO.write(SwingFXUtils.fromFXImage(highRes, null), "png", file);
-        }
-        catch (Exception s)
-        {
-        }
+        Runnable r = () -> {
+            try
+            {
+                ImageIO.write(SwingFXUtils.fromFXImage(highRes, null), "png", file);
+            }
+            catch (Exception s)
+            {
+            }
+            finally
+            {
+                System.out.println("SAVED!");
+            }
+        };
+        new Thread(r).start();
     }
 
 
