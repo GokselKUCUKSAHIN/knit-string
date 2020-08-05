@@ -2,8 +2,13 @@
 
 ### TODO List📝
 - [ ] User Friendly UI
-- [x] Save As File (✅ 21/07/2020)
-- [x] High Resolotion Save (✅ 21/07/2020)
+  - [ ] Save File Diaglog
+  - [ ] Open File Diaglog
+  - [ ] Alert Messages Boxes
+- [ ] Saving
+  - [x] Save As File (✅ 21/07/2020)
+  - [x] High Resolotion Save (✅ 21/07/2020)
+  - [ ] Custom Resolotion Support
 - [ ] Re-watchable TimeLapse
 - [ ] MultiThreading and Parallel processing
   - [x] Concurrent saving (✅ 04/08/2020)
