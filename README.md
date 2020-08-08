@@ -20,6 +20,7 @@
   - [ ] Line-Opacity
   - [ ] Line-Count
   - [ ] TimeLapse Play Rate
+- [ ] Invert Colors Option
 
 # 🧶 Knit-String-Art 🎨
 Knit String Art With **JavaFx**☕ 
