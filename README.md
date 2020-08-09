@@ -2,6 +2,7 @@
 
 ### TODO List📝
 - [ ] User Friendly UI
+  - [ ] Control Window
   - [ ] Save File Diaglog
   - [ ] Open File Diaglog
   - [ ] Alert Messages Boxes
