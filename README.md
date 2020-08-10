@@ -2,16 +2,26 @@
 
 ### TODO List📝
 - [ ] User Friendly UI
-- [x] Save As File (✅ 21/07/2020)
-- [x] High Resolotion Save (✅ 21/07/2020)
+  - [ ] Control Window
+  - [ ] Save File Diaglog
+  - [ ] Open File Diaglog
+  - [ ] Alert Messages Boxes
+- [ ] Saving
+  - [x] Save As File (✅ 21/07/2020)
+  - [x] High Resolotion Save (✅ 21/07/2020)
+  - [ ] Custom Resolotion Support
 - [ ] Re-watchable TimeLapse
 - [ ] MultiThreading and Parallel processing
+  - [x] Concurrent saving (✅ 04/08/2020)
+  - [x] Parallel Knit Point calculations (✅ 30/07/2020)
+  - [ ] Parallel Line Score calculations 
 - [ ] Dialable parameters
   - [ ] Line-Width
   - [ ] Line-Color
   - [ ] Line-Opacity
   - [ ] Line-Count
   - [ ] TimeLapse Play Rate
+- [ ] Invert Colors Option
 
 # 🧶 Knit-String-Art 🎨
 Knit String Art With **JavaFx**☕ 
