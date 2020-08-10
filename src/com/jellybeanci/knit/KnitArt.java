@@ -95,12 +95,12 @@ public class KnitArt
     {
         Point2D[] array = new Point2D[length];
         Point2D center = new Point2D(width / 2, height / 2);
-        final double RADIUS = width / 2;
+        final double RADIUS = (width - 2) / 2;              // 2 pixel offset for edge collision.
         final double ANGLE_UNIT = (Math.PI * 2) / length;
         //
         for (int i = 0; i < length; i++)
         {
-            double angle = ANGLE_UNIT * i - Math.PI / 2; //180 degree counter clock wise shift
+            double angle = ANGLE_UNIT * i - Math.PI / 2;    // 180 degree counter clock wise shift.
             double x = Math.round(center.getX() + RADIUS * Math.cos(angle));
             double y = Math.round(center.getY() + RADIUS * Math.sin(angle));
             if (x == width)
@@ -187,22 +187,21 @@ public class KnitArt
             }
         };
         Runnable r2 = () -> {
-            for (int i = quadPoint; i < 2*quadPoint; i++)
+            for (int i = quadPoint; i < 2 * quadPoint; i++)
             {
                 Point2D dot = dotList.get(i);
                 reducePoint(dot, img);
             }
         };
-
         Runnable r3 = () -> {
-            for (int i = 2*quadPoint; i < 3*quadPoint; i++)
+            for (int i = 2 * quadPoint; i < 3 * quadPoint; i++)
             {
                 Point2D dot = dotList.get(i);
                 reducePoint(dot, img);
             }
         };
         Runnable r4 = () -> {
-            for (int i = 3*quadPoint; i < dotList.size(); i++)
+            for (int i = 3 * quadPoint; i < dotList.size(); i++)
             {
                 Point2D dot = dotList.get(i);
                 reducePoint(dot, img);

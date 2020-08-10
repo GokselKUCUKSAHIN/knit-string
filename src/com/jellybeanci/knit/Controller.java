@@ -11,6 +11,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.util.Duration;
@@ -44,6 +45,7 @@ public class Controller
 
     @FXML
     BorderPane rootPane;
+    //Pane rootPane;
 
     private static Image loadImage(String name) throws IOException
     {
@@ -79,7 +81,7 @@ public class Controller
         //drawLine(new Point2D(0,0),new Point2D(600,600), Color.RED);
         try
         {
-            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("me_close.png"));
+            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("baris.png"));
         }
         catch (IOException e)
         {

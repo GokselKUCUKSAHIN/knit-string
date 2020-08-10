@@ -30,7 +30,7 @@ public class Main extends Application
         });
         stage.setTitle("JellyBeanci");
         stage.setResizable(false);
-        stage.setScene(new Scene(root, 700, 700));
+        stage.setScene(new Scene(root, 710, 710));
         stage.show();
         root.requestFocus();
     }
