@@ -6,6 +6,10 @@
   - [ ] Save File Diaglog
   - [ ] Open File Diaglog
   - [ ] Alert Messages Boxes
+  - [ ] Menu Bar
+   - [ ] File
+   - [ ] Edit
+   - [ ] About
 - [ ] Saving
   - [x] Save As File (✅ 21/07/2020)
   - [x] High Resolotion Save (✅ 21/07/2020)
