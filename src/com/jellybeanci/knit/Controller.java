@@ -81,7 +81,7 @@ public class Controller
         //drawLine(new Point2D(0,0),new Point2D(600,600), Color.RED);
         try
         {
-            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("baris.png"));
+            KnitArt knitArt = new KnitArt(gc, 600, 600, 400, loadImage("me_close.png"));
         }
         catch (IOException e)
         {

@@ -95,7 +95,7 @@ public class KnitArt
     {
         Point2D[] array = new Point2D[length];
         Point2D center = new Point2D(width / 2, height / 2);
-        final double RADIUS = (width - 2) / 2;              // 2 pixel offset for edge collision.
+        final double RADIUS = (width - 5) / 2;              // 2 pixel offset for edge collision.
         final double ANGLE_UNIT = (Math.PI * 2) / length;
         //
         for (int i = 0; i < length; i++)
