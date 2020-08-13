@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
@@ -47,6 +48,14 @@ public class Controller
     BorderPane rootPane;
     //Pane rootPane;
 
+
+    @FXML
+    protected void aboutClick()
+    {
+        showMessage("About","This app created by GokselKUCUKSAHIN", Alert.AlertType.INFORMATION);
+    }
+
+
     private static Image loadImage(String name) throws IOException
     {
         return new Image(new FileInputStream("img/" + name));
@@ -65,13 +74,16 @@ public class Controller
         update.setCycleCount(Timeline.INDEFINITE);
         update.setRate(2.5);
         update.setAutoReverse(false);
-        //
+
+        // TODO UNCOMMENT LATER
+
         now();
         KnitArt.isRealyDone.addListener((observable, oldValue, newValue) -> {
             System.out.println("READY!!!");
             System.out.println("RecudeImageDataErr: " + KnitArt.errCountRecude + "; GetLineScoreErr: " + KnitArt.errCountScore);
             timeStamp();
         });
+
     }
 
     public static void now()
@@ -190,5 +202,17 @@ public class Controller
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         Date date = ts;
         System.out.println(date);
+    }
+
+    private static void showMessage(String title, String message, Alert.AlertType alertType)
+    {
+        Platform.runLater(() -> {
+            // Update UI here.
+            Alert alert = new Alert(alertType);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        });
     }
 }
