@@ -52,7 +52,20 @@ public class Controller
     @FXML
     protected void aboutClick()
     {
-        showMessage("About","This app created by GokselKUCUKSAHIN", Alert.AlertType.INFORMATION);
+        showMessage("About", "This app created by GokselKUCUKSAHIN", Alert.AlertType.INFORMATION);
+    }
+
+    @FXML
+    protected void saveClick()
+    {
+        if (count >= KnitArt.LINE_LIMIT)
+        {
+            saveFile(this.canvas);
+        }
+        else
+        {
+            System.out.println("mada mada");
+        }
     }
 
 
@@ -147,7 +160,7 @@ public class Controller
     static WritableImage wim = new WritableImage(600, 600);
     static WritableImage highRes = new WritableImage(6000, 6000);
 
-    public static void saveFile(Canvas canvas)
+    protected static void saveFile(Canvas canvas)
     {
         File file = new File("CanvasImage.png");
         canvas.snapshot(null, wim);
@@ -158,7 +171,6 @@ public class Controller
         catch (Exception s)
         {
         }
-
     }
 
     public static void saveAsBigPicture()
