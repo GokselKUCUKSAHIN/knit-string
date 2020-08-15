@@ -9,7 +9,7 @@
   - [ ] Menu Bar
     - [ ] File
     - [ ] Edit
-    - [ ] About
+    - [x] About (✅ 14/08/2020)
 - [ ] Saving
   - [x] Save As File (✅ 21/07/2020)
   - [x] High Resolotion Save (✅ 21/07/2020)
