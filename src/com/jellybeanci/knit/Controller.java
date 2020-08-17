@@ -68,6 +68,17 @@ public class Controller
         }
     }
 
+    @FXML
+    protected void openFileDialog()
+    {
+        // TODO implement here
+    }
+
+    @FXML
+    private void saveFileDialog()
+    {
+        // TODO implement here
+    }
 
     private static Image loadImage(String name) throws IOException
     {
