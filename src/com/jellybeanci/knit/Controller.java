@@ -15,6 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.imageio.ImageIO;
@@ -31,6 +33,7 @@ public class Controller
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
     //
+    protected static FileChooser fileChooser = new FileChooser();
     public static Timeline update;
     private static Color backcolor = Color.rgb(51, 51, 51);
     private static Color forecolor;
@@ -61,8 +64,7 @@ public class Controller
         if (count >= KnitArt.LINE_LIMIT)
         {
             saveFile(this.canvas);
-        }
-        else
+        } else
         {
             System.out.println("mada mada");
         }
@@ -72,12 +74,18 @@ public class Controller
     protected void openFileDialog()
     {
         // TODO implement here
+        File selectedFile = fileChooser.showOpenDialog(Main.stg);
+        // Select file
+        // Check file (600x600 and Image and Exist)
+        // Set file.
+        // Draw file/image
     }
 
     @FXML
     private void saveFileDialog()
     {
         // TODO implement here
+
     }
 
     private static Image loadImage(String name) throws IOException
@@ -88,10 +96,22 @@ public class Controller
     @FXML
     private void initialize()
     {
+        // Open File Dialog
+        ArrayList<String> extension = new ArrayList<>();
+        extension.add("*.png");
+        extension.add("*.jpg");
+        extension.add("*.jpeg");
+        extension.add("*.bmp");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", extension));
+        //
+
+
         timeStamp();
+        //
         center = new Point2D(WIDTH / 2, HEIGHT / 2);
         gc = canvas.getGraphicsContext2D();
-        //
+
+        // TimeLine
         update = new Timeline(new KeyFrame(Duration.millis(16), e -> {
             frame();
         }));
@@ -100,14 +120,14 @@ public class Controller
         update.setAutoReverse(false);
 
         // TODO UNCOMMENT LATER
-
+        /*
         now();
         KnitArt.isRealyDone.addListener((observable, oldValue, newValue) -> {
             System.out.println("READY!!!");
             System.out.println("RecudeImageDataErr: " + KnitArt.errCountRecude + "; GetLineScoreErr: " + KnitArt.errCountScore);
             timeStamp();
         });
-
+        */
     }
 
     public static void now()

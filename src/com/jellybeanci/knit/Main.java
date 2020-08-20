@@ -9,11 +9,13 @@ import javafx.stage.Stage;
 public class Main extends Application
 {
 
+    public static Stage stg;
+
     @Override
     public void start(Stage stage) throws Exception
     {
         Parent root = FXMLLoader.load(getClass().getResource("MainUI.fxml"));
-        root.setOnKeyPressed(e->{
+        root.setOnKeyPressed(e -> {
             switch (e.getCode())
             {
                 case F1:
@@ -33,6 +35,8 @@ public class Main extends Application
         stage.setScene(new Scene(root, 710, 710));
         stage.show();
         root.requestFocus();
+        //
+        stg = stage;
     }
 
 
