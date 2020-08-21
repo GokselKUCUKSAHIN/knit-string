@@ -23,9 +23,11 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.IllegalFormatFlagsException;
 
 public class Controller
 {
@@ -75,6 +77,7 @@ public class Controller
     {
         // TODO implement here
         File selectedFile = fileChooser.showOpenDialog(Main.stg);
+        loadImage(selectedFile);
         // Select file
         // Check file (600x600 and Image and Exist)
         // Set file.
@@ -86,6 +89,28 @@ public class Controller
     {
         // TODO implement here
 
+    }
+
+    private static Image loadImage(File file)
+    {
+        try
+        {
+            Image im = new Image(file.toURI().toString());
+            if (!(im.getHeight() == 600 && im.getWidth() == 600))
+            {
+                throw new ArithmeticException("Must be 600x600");
+            }
+            return im;
+        }
+        catch (IllegalArgumentException ex)
+        {
+            showMessage("Error", "Please select a valid Image file.", Alert.AlertType.ERROR);
+        }
+        catch (ArithmeticException exx)
+        {
+            showMessage("Error", "The Image file must be 600x600 pixels", Alert.AlertType.ERROR);
+        }
+        return null;
     }
 
     private static Image loadImage(String name) throws IOException
@@ -104,8 +129,6 @@ public class Controller
         extension.add("*.bmp");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", extension));
         //
-
-
         timeStamp();
         //
         center = new Point2D(WIDTH / 2, HEIGHT / 2);
