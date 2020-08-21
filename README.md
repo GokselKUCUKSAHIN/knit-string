@@ -4,7 +4,7 @@
 - [ ] User Friendly UI
   - [ ] Control Window
   - [ ] Save File Diaglog
-  - [ ] Open File Diaglog
+  - [x] Open File Diaglog
   - [ ] Alert Messages Boxes
   - [ ] Menu Bar
     - [ ] File
