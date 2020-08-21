@@ -4,7 +4,7 @@
 - [ ] User Friendly UI
   - [ ] Control Window
   - [ ] Save File Diaglog
-  - [x] Open File Diaglog
+  - [x] Open File Diaglog (✅ 21/08/2020)
   - [ ] Alert Messages Boxes
   - [ ] Menu Bar
     - [ ] File
