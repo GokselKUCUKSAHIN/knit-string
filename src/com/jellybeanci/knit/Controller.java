@@ -98,7 +98,7 @@ public class Controller
             Image im = new Image(file.toURI().toString());
             if (!(im.getHeight() == 600 && im.getWidth() == 600))
             {
-                throw new ArithmeticException("Must be 600x600");
+                throw new ArithmeticException("Must be 600x600!");
             }
             return im;
         }
@@ -109,6 +109,10 @@ public class Controller
         catch (ArithmeticException exx)
         {
             showMessage("Error", "The Image file must be 600x600 pixels", Alert.AlertType.ERROR);
+        }
+        catch (Exception exxx)
+        {
+            System.out.println("SomeThing Happened.");
         }
         return null;
     }
