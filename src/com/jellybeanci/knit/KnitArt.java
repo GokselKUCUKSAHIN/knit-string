@@ -1,5 +1,7 @@
 package com.jellybeanci.knit;
 
+import com.sun.istack.internal.NotNull;
+import com.sun.istack.internal.Nullable;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Point2D;
@@ -53,7 +55,7 @@ public class KnitArt
         }
     }
 
-    public static void draw(GraphicsContext gc, double[] imageData, Point2D[] pinList, int startPinIndex)
+    public static synchronized void draw(GraphicsContext gc, double[] imageData, Point2D[] pinList, int startPinIndex)
     {
         int endPinIndex = 0;
         double highestScore = 0;
@@ -78,7 +80,14 @@ public class KnitArt
             lineList.add(new Strand(startPinIndex, endPinIndex));
             //drawLine(graphicsContext, pinList[startPinIndex], pinList[endPinIndex], forecolor);
             addToArray(new Strand(startPinIndex, endPinIndex));
-            reduceImageData(imageData, pinList[startPinIndex], pinList[endPinIndex]);
+            try
+            {
+                reduceImageData(imageData, pinList[startPinIndex], pinList[endPinIndex]);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
             draw(gc, imageData, pinList, endPinIndex);
         } else
         {
@@ -175,7 +184,7 @@ public class KnitArt
         return pointList;
     }
 
-    public static void reduceImageData(double[] img, Point2D start, Point2D end)
+    public static void reduceImageData(double[] img, Point2D start, Point2D end) throws InterruptedException
     {
         ArrayList<Point2D> dotList = getPointListOnLine(start, end);
         int quadPoint = dotList.size() / 4;
@@ -215,13 +224,18 @@ public class KnitArt
         t2.start();
         t3.start();
         t4.start();
-
+        t1.join();
+        t2.join();
+        t3.join();
+        t4.join();
+        //System.out.println("Continue");
         /*
         for (Point2D dot : dotList)
         {
             reducePoint(dot, img);
         }
         */
+
     }
 
     public static void reducePoint(Point2D dot, double[] img)

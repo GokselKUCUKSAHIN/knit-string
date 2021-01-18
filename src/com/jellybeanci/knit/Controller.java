@@ -147,14 +147,14 @@ public class Controller
         update.setAutoReverse(false);
 
         // TODO UNCOMMENT LATER
-        /*
+
         now();
         KnitArt.isRealyDone.addListener((observable, oldValue, newValue) -> {
             System.out.println("READY!!!");
             System.out.println("RecudeImageDataErr: " + KnitArt.errCountRecude + "; GetLineScoreErr: " + KnitArt.errCountScore);
             timeStamp();
         });
-        */
+
     }
 
     public static void now()
